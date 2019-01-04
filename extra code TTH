@@ -1,0 +1,526 @@
+//listening events
+//DOM events
+
+
+current location - location.href
+
+getElementById- returns a single variable by its given id.
+
+getElementsByTagName - returns multiple tags of something.
+
+getElementsByClassName - selection of items that all have the same class name.
+
+Element.textContent
+  The textContent wi;; return or set all the values that are within the textContent method.
+
+Element.innerHtml
+  add html to the webpage using javascript, using this code.
+
+element.style.display
+  change the content of CSS with this code.
+
+document.createElement();
+  This method will create another element to a already exsiting ordered list, or create new Element
+  this will not however display to the webpage.
+      ** let newParagraph = document.createElement('p');
+
+setting a variables class using the ClassName method
+      **	newParagraph.className = 'panel';
+
+node.removeChild()
+  removes an element that is selected within a parent node
+
+.lastChild()
+  selects last child element within a list of elements
+      ** {
+          let d = document.getElementById("top");
+      let d_nested = document.getElementById("nested");
+      let throwawayNode = d.removeChild(d_nested);
+          }
+
+ANONIMOOUS FUNCTION
+      ** execute ((something) => {
+            console.log(soemthing)
+
+    },'string value thats passed into something')
+
+TIME DELAY
+  the timeout function method allows passing in functions easier, allowing a time delay for the function to execute.
+      ** let timoutID = scope.setTimout(function[.delay])
+      **
+          window.setTimeout((something) =>{
+          console.log(something);
+          },3000, 'Greetings,everyone!')
+
+EVENT LISTENER BUBBLING
+  Instead of setting an event listener to a child element, set it to its direct ansestor to activate it more efficiently
+
+  EVENT TARGET
+      the target event property returns the element that triggered the event.
+      The target property gets the element on which the event originally occurred,
+        **
+          if(event.target.tagName === 'LI'){
+          event.target.textContent = event.target.textContent.toUpperCase();
+        }
+
+
+JAVASCRIPT AND THE DOM SIBLING TRAVERSAL
+
+  **
+      const list = document.getElementsByTagName('ul')[0];
+
+        list.addEventListener('click',finction(e){
+          if(e.target.tagName == 'Button')
+          {
+            if(e.target.className == 'highlight'){
+            let li = e.tartget.parentNode;
+            let p = li.previousElementSibling;
+            let ul = li.parentNode;
+              if(p)
+              {
+              ul.insertBefore(p,li);
+            }
+          }
+        }
+      });
+
+PARENTNODE.CHILD
+    ** let elList = elementNodeReference.children;
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+const toggleList = document.getElementById('toggleList');
+const listDiv = document.querySelector('.list');
+const inputDescription = document.querySelector('input.description');
+const pDescription = document.querySelector('p.description');
+const buttonDescription = document.querySelector('button.description');
+const listUl = listDiv.querySelector('ul');
+const addItemInput = document.querySelector('input.addItem');
+const addItemButton = document.querySelector('button.addItemButton');
+const removeItemButton = document.querySelector('button.removeItemButton');
+const listItems = document.getElementsByTagName('li');
+const lis = listUl.children;
+
+function attachListItemButtons(li){
+  let up = document.createElement('button');
+      up.className = 'up';
+      up.textContent = 'up'
+      li.appendChid(up);
+  let down = document.createElement('button');
+      down.className = 'down';
+      down.textContent = 'down'
+      li.appendChid(down);
+
+  let remove = document.createElement('button');
+      remove.className = 'remove';
+      remove.textContent = 'remove';
+      li.appendChid(remove);
+
+}
+  for ( let i=0;i<lis.length; i++){
+    attachListItemButtons(lis[i]);
+
+  }
+
+    listUl.addEventListener('click', (event) => {
+      if(event.target.tagNamme === 'BUTTON'){
+        if(event.target.className === 'remove'){
+        let li = event.target.parentNode;
+        let ul = li.parentNode;
+        ul.removeChild(li);
+        }
+           if(event.target.className === 'up'){
+              let li = event.target.parentNode;
+              let prevLi = li.previousElementSibling;
+              let ul = li.parentNode;
+             if(prevLi){
+              ul.inertbefore(li,prevLi);
+           }
+               if(event.target.className === 'down'){
+                let li = event.target.parentNode;
+                let nextLi = li.nextElementSibling;
+                let ul = li.parentNode;
+               if(nextLi){
+                ul.inertbefore(nextLi,li);
+             }
+           }
+        }
+      }
+        });
+
+toggleList.addEventListener('click' , () => {
+     if(listDiv.style.display == 'none'){
+        toggleList.textContent = 'Hide List';
+        listDiv.style.display = 'block';
+      }else{
+        toggleList.textContent = 'Show List';
+        listDiv.style.display = 'none';
+  }
+});
+
+buttonDescription.addEventListener('click' , () => {
+   pDescription.innerHTML = inputDescriptionInput.value + ':';
+   pDescriptionInput.value = '';
+});
+
+pDescription.title = 'List description';
+
+addItemButton.addEventListener('click', () => {
+     let ul = document.getElementsByTagName('ul')[0];
+     let li = document.createElement('li');
+     li.textContent = addItemInput.value;
+      attachListItemButtons(li);
+     ul.appendChild(li);
+     addItemInput.value = '';
+ });
+
+removeItemButton.addEventListener('click', () => {
+     let ul = document.getElementsByTagName('ul')[0];
+     let li = document.createElement('li:last-child');
+     ul.removeChild(li);
+});
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+
+
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+------------------------**jQUARY**----------------------------------
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+
+
+
+//javascript
+
+  const box = document.querySelector('.box');
+  box.style.display = 'none';
+
+
+//jQuery
+//this link loads the file from the jquery website
+<script src = "http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+
+  jQuery('.box').hide();
+  $('.box').hide();
+  $('.box')show();
+
+//other long winded way of doing code
+  document.getElementById;
+  document.getElementsByTagName;
+  document.getElementsByClassName;
+
+
+//Event Handling
+      javascript
+       const box = document.querySelector('.box');
+
+         box.addEventListener('click' , function () {
+
+         alert('You clicked me!');
+
+      });
+
+      jQuery
+
+      $('.box').click(function(){
+      alert('you clicked me with jQuery');
+      });
+--------------
+          $('#flashMessage').hide();
+          $('#flashMessage').fadeIn(1000);
+          $('#flashMessage').delay(2000);
+          $('#flashMessage').slideUp();
+
+          $('#flashMessage').hide().fadeIn(1000).delay(2000).slideUp();
+--------------
+          $('#flashMessage').hide();
+
+
+          $('#previewButton').click(function(){
+
+          const title = $('#blogTitleInput').val();
+          console.log(title);
+
+          const content = $('#blogContentInput').val();
+          console.log(content);
+
+          $('#flashMessage')
+          .fadeIn(1000)
+          .delay(2000)
+          .slideUp();
+
+
+          });
+
+--------------
+//when creating an element, make sure that there is a dollar sign in front of the element name
+//for good practice.
+
+const $button = $('<button>Reveal Spoiler </button>');
+
+$('.spoiler').append($button);
+--------------
+//ON METHOD////
+//////////////
+  the on method is useful for using multiple eventListers to one function to stop DRY code from happening
+
+  **
+      $('.spoiler button').on('click mouseLeave',function(){
+     //Show the spoiler text
+    $('.spoiler span').show();
+    //Hide the "reveal spoiler" button
+    $('.spoiler span').hide();
+----------------
+////////////////////
+//adding an addEventListenervent within json
+///////////////////
+
+
+//create the "reveal spoiler' button
+ const $button = $('<button>Reveal Spoiler </button>');
+
+$('.spoiler').append($button);
+
+//grabs any span elements that are within the spoiler class
+//this will however grab all span tags, which can be bad
+$('.spoiler span').hide();
+
+$('.spoiler button').on('click mouseLeave',function(){
+   //Show the spoiler text
+  $('.spoiler span').show();
+  //Hide the "reveal spoiler" button
+  $('.spoiler span').hide();
+
+});
+
+------------------
+
+    //built in looping feature, no need to use a for loop
+    const $odd = $('a:odd');
+    $odd.hide();
+
+    //this va riable looks to see if any links start with http.
+    // the carot means 'starts with'
+    const $secureLinks = $('a[href^="https://"]');
+    $secureLinks.hide();
+
+    //the carrot case can be used for lots of different cases
+    //in this case, it looks to see if the input field that starts with add
+    $('input[name^="add"]');
+
+    //this variable looks to see if any links end with the .pdf
+    //using the dollar sign instead of carot means end instead of beginning
+    const $pdfs = $('a[href$=".pdf"]');
+    $pdfs.hid();
+
+--------------------
+    //built in looping feature, no need to use a for loop
+    const $odd = $('a:odd');
+    $odd.hide();
+
+    //this va riable looks to see if any links start with http.
+    // the carot means 'starts with'
+    const $secureLinks = $('a[href^="https://"]');
+
+
+
+    //opens up link on a new tab.
+    //this is usually done in html
+        //target ='_blank'
+    //$secureLinks.attr('target','_blank');
+
+    const $pdfs = $('a[href$=".pdf"]');
+
+    $pdfs.attr('download',true);
+
+--------------------
+
+      const $odd = $('a:odd');
+      const $secureLinks = $('a[href^="https://"]');
+      const $pdfs = $('a[href$=".pdf"]');
+
+      $secureLinks.attr('target','_blank');
+      $pdfs.attr('download',true);
+      $secureLinks.addClass('secure');
+      $pdfs.addClass('pdf');
+
+
+      //const $pdfCheckBox = $('<label><input type='checkbox'> Allow PDF downloads</label>');
+      $pdfs.on('click', function(event){
+      //check to see if check box is checked
+        //if zero checkbozes are checked
+            //prevent download of documents
+            //alert the user
+            //else allow the download
+
+
+      if(  $(':checked').length === 0){
+        //prevent the download from happening
+          event.preventDefault();
+          alert('please check the box to allow PDF downloads.')
+      }
+
+      });
+
+      $('#links').append('$pdfCheckBox');
+
+
+       //jquery for loop
+
+
+      $('a').each(function(){
+       //console.log(index,$(element).attr('href'));
+
+        const url = $(this).attr('href');
+        $(this).parent().append(`(${url})`);
+
+      });
+------------------------------------------------------------
+**** you can add jQuery to a project by going to the jQuery website and going to
+          cdn and adding the minimize code into an html link. You are getting jquery
+          from an external server directly to your cite.
+
+
+
+///////////////////////////////////////////////
+//////////////////////////////////////////////
+////////////////AJAX./////////////////////////
+/////////////////////////////////////////////
+
+
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if(xhr.readyState === 4){
+       document.querySelector('#ajax').innerHTML = xhr.responseText;
+      }
+    };
+
+    //use get if you are wanting to get data and post if you are sending the data.
+    //the url is where the data is going to be sent.
+    xhr.open('GET', 'sidebar.html');
+
+    xhr.send();
+
+-Use get when planning on 'getting' or recieving data
+-use post when data is going to be saved like email or vote
+
+
+**
+        var xhr = new XMLHttpRequest();
+        //the function is the callback
+        xhr.onreadystatechange = function () {
+                //a status of 200 means success on the file
+          if (xhr.readyState === 4 && xhr.status === 200*/) {
+            if(xhr.status === 200){
+            document.getElementById('ajax').innerHTML = xhr.responseText;
+            }else if(xhr.status === 404){
+              //file not found
+               alert(xhr.statusText);
+            }else if(xhr.status === 500){
+              //problems with the server
+                alert(xhr.statusText);
+            }
+          }
+        };
+         xhr.open('GET', 'sidebar.html');
+         xhr.send();
+
+
+----------------EMPLOYEE STATUS PROJECT------------
+
+**
+let xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function(){
+  if(xhr.readyState === 4){
+        //the parse method takes the sting value and converts it
+            //into text that an be manipulated with javascript
+      let employees = JSON.parse(xhr.responseText);
+      let statusHTML = '<ul class ="bulleted">';
+      for(let i=0;i<employees.length;i++){
+          if(employees[i].inOffice === true){
+            statusHTML += '<li class = "in">';
+      }else{
+            statusHTML += '<li class = "out">';
+      }
+        statusHTML += employees[i].name;
+        statusHTML += '</li>';
+
+    }
+    statusHTML += '</ul>';
+    document.getElementById('employeeList').innerHTML = statusHTML;
+  }
+};
+  xhr.open('GET', 'data.employees.jason');
+  xhr.send();
+
+  --------------------JQUERY AJAX------------------
+
+  **
+
+        let url = 'employee.php';
+        let data = {
+            firstName: 'Curtis',
+            lastName: 'Hubbard'
+        };
+        let callback = function(response){
+              //inside is the response which the server sends back to the user
+
+        };
+
+        $.get(url,data,calback);
+  ---------------------------------------
+**
+      $(document).ready(function(){
+
+      let url = "..data/employee.json";
+
+      $.getJSON(url,function(response){
+
+        let statusHTML = '<ul class = bulleted >';
+
+        $.each(response,function(index,employee){
+          if(employee.inoffice === true){
+              statusHTML += '<li class = "in">';
+          }else{
+              statusHTML += '<li class = "out">';
+          }
+          statusHTML += employee.name + '</li>';
+        }); //end each function over employees
+        statusHTML += '</ul>';
+        $('employeeList').html(statusHTML);
+      });//end getJSON
+    });//end ready
+
+    ---------------------------------------
+    //ajax method of sending data to the server using the ajax.method().
+  $(document).ready(function(){
+      $('form').submit(function(event){
+          event.preventDefault();
+          let url = $(this).attr("action");
+          let formData = $(this).serialize();
+            $.ajax(url, {
+              data:formData,
+              type:"POST",
+              success: function(response){
+                $('#signUp').html('<p>Thanks for signing up!</p>');
+                //you can send a username and password in this area of the ajax.method()
+              }
+
+            }); //end of ajax object
+      });//end of submit function
+  });//end of ready function
+
+
+//////////////////////////////////////////////////////////
+//////////////////////JSON///////////////////////////////
+////////////////////////////////////////////////////////
+
+//values have to be in double quotes
+//array of objects
+//not actual javascript but a string of text.
